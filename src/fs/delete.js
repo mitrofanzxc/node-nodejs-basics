@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { access, constants, unlink } from "node:fs/promises";
 
 const INIT_DIRNAME = "files";
-const FINAL_FILENAME = "test.txt";
+const FINAL_FILENAME = "fileToRemove.txt";
 const ERROR_MESSAGE = "FS operation failed";
 
 const remove = async () => {
