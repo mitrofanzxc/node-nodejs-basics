@@ -14,6 +14,7 @@ const create = async () => {
         const ENTRY_FILE_PATH = fileURLToPath(import.meta.url);
         const ENTRY_DIRNAME_PATH = join(dirname(ENTRY_FILE_PATH), INIT_DIRNAME);
         const FINAL_FILENAME_PATH = join(ENTRY_DIRNAME_PATH, FINAL_FILENAME);
+
         const data = new Uint8Array(Buffer.from(DATA));
 
         await writeFile(FINAL_FILENAME_PATH, data, { flag: FLAG_WRITE_FILE });
