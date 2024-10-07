@@ -11,8 +11,7 @@ const spawnChildProcess = async (args) => {
     try {
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = dirname(__filename);
-        const ENTRY_DIRNAME_PATH = join(__dirname, INIT_DIRNAME);
-        const FINAL_FILENAME_PATH = join(ENTRY_DIRNAME_PATH, FINAL_FILENAME);
+        const FINAL_FILENAME_PATH = join(__dirname, INIT_DIRNAME, FINAL_FILENAME);
 
         const childProcess = spawn("node", [FINAL_FILENAME_PATH, ...args]);
 
