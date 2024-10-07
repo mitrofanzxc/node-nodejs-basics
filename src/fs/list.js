@@ -7,8 +7,9 @@ const ERROR_MESSAGE = "FS operation failed";
 
 const list = async () => {
     try {
-        const ENTRY_FILE_PATH = fileURLToPath(import.meta.url);
-        const ENTRY_DIRNAME_PATH = join(dirname(ENTRY_FILE_PATH), INIT_DIRNAME);
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
+        const ENTRY_DIRNAME_PATH = join(__dirname, INIT_DIRNAME);
 
         await access(ENTRY_DIRNAME_PATH, constants.F_OK);
 

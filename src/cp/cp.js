@@ -8,8 +8,9 @@ const ERROR_MESSAGE = "CP operation failed";
 
 const spawnChildProcess = async (args) => {
     try {
-        const ENTRY_FILE_PATH = fileURLToPath(import.meta.url);
-        const ENTRY_DIRNAME_PATH = join(dirname(ENTRY_FILE_PATH), INIT_DIRNAME);
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
+        const ENTRY_DIRNAME_PATH = join(__dirname, INIT_DIRNAME);
         const FINAL_FILENAME_PATH = join(ENTRY_DIRNAME_PATH, FINAL_FILENAME);
 
         const cp = fork(FINAL_FILENAME_PATH, args);

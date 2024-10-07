@@ -8,9 +8,10 @@ const ERROR_MESSAGE = "FS operation failed";
 
 const copy = async () => {
     try {
-        const ENTRY_FILE_PATH = fileURLToPath(import.meta.url);
-        const ENTRY_DIRNAME_PATH = join(dirname(ENTRY_FILE_PATH), INIT_DIRNAME);
-        const FINAL_DIRNAME_PATH = join(dirname(ENTRY_FILE_PATH), FINAL_DIRNAME);
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
+        const ENTRY_DIRNAME_PATH = join(__dirname, INIT_DIRNAME);
+        const FINAL_DIRNAME_PATH = join(__dirname, FINAL_DIRNAME);
 
         await access(ENTRY_DIRNAME_PATH, constants.F_OK);
         await mkdir(FINAL_DIRNAME_PATH, { recursive: false });

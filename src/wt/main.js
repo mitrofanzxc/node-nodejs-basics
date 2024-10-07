@@ -8,9 +8,9 @@ const ERROR_MESSAGE = "WT operation failed";
 
 const performCalculations = async () => {
     try {
-        const ENTRY_FILE_PATH = fileURLToPath(import.meta.url);
-        const ENTRY_DIRNAME_PATH = join(dirname(ENTRY_FILE_PATH));
-        const FINAL_FILENAME_PATH = join(ENTRY_DIRNAME_PATH, FINAL_FILENAME);
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
+        const FINAL_FILENAME_PATH = join(__dirname, FINAL_FILENAME);
 
         const numCores = availableParallelism();
         const workers = [];
