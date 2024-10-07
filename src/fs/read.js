@@ -11,8 +11,7 @@ const read = async () => {
     try {
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = dirname(__filename);
-        const ENTRY_DIRNAME_PATH = join(__dirname, INIT_DIRNAME);
-        const READ_FILE_PATH = join(ENTRY_DIRNAME_PATH, READ_FILENAME);
+        const READ_FILE_PATH = join(__dirname, INIT_DIRNAME, READ_FILENAME);
 
         await access(READ_FILE_PATH, constants.F_OK);
 
