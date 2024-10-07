@@ -15,7 +15,7 @@ const parseEnv = () => {
         }, []);
 
         console.log(envVars?.join(SEPARATOR));
-    } catch (error) {
+    } catch {
         throw new Error(ERROR_MESSAGE);
     }
 };

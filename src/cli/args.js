@@ -20,7 +20,7 @@ const parseArgs = () => {
         }, []);
 
         console.log(result.join(SEPARATOR));
-    } catch (error) {
+    } catch {
         throw new Error(ERROR_MESSAGE);
     }
 };
