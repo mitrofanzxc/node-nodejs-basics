@@ -1,7 +1,8 @@
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
 import { Buffer } from "node:buffer";
+
+import { extractPathInfo } from "../utils/extract-path-info";
 
 const INIT_DIRNAME = "files";
 const FINAL_FILENAME = "fresh.txt";
@@ -11,8 +12,7 @@ const ERROR_MESSAGE = "FS operation failed";
 
 const create = async () => {
     try {
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = dirname(__filename);
+        const { __dirname } = extractPathInfo(import.meta.url);
         const FINAL_FILENAME_PATH = join(__dirname, INIT_DIRNAME, FINAL_FILENAME);
 
         const data = new Uint8Array(Buffer.from(DATA));

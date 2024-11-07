@@ -1,12 +1,12 @@
-import { dirname, sep } from "node:path";
-import { fileURLToPath } from "node:url";
+import { sep } from "node:path";
 import { release, version } from "node:os";
 import { createServer as createServerHttp } from "node:http";
 
+import { extractPathInfo } from "../utils/extract-path-info.js";
+
 import "./files/c.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const { __filename, __dirname } = extractPathInfo(import.meta.url);
 const PORT = 3000;
 const INCOMING_MESSAGE = "Request accepted";
 

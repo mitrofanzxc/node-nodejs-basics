@@ -1,15 +1,15 @@
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import { availableParallelism } from "node:os";
 import { Worker } from "node:worker_threads";
+
+import { extractPathInfo } from "../utils/extract-path-info";
 
 const FINAL_FILENAME = "worker.js";
 const ERROR_MESSAGE = "WT operation failed";
 
 const performCalculations = async () => {
     try {
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = dirname(__filename);
+        const { __dirname } = extractPathInfo(import.meta.url);
         const FINAL_FILENAME_PATH = join(__dirname, FINAL_FILENAME);
 
         const numCores = availableParallelism();
