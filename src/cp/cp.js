@@ -1,7 +1,8 @@
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import { spawn } from "node:child_process";
 import { stdin, stdout } from "node:process";
+
+import { extractPathInfo } from "../utils/extract-path-info";
 
 const INIT_DIRNAME = "files";
 const FINAL_FILENAME = "script.js";
@@ -9,8 +10,7 @@ const ERROR_MESSAGE = "CP operation failed";
 
 const spawnChildProcess = async (args) => {
     try {
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = dirname(__filename);
+        const { __dirname } = extractPathInfo(import.meta.url);
         const FINAL_FILENAME_PATH = join(__dirname, INIT_DIRNAME, FINAL_FILENAME);
 
         const childProcess = spawn("node", [FINAL_FILENAME_PATH, ...args]);

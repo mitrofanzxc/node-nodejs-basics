@@ -1,14 +1,14 @@
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-import { access, constants, copyFile, mkdir, readdir } from "node:fs/promises";
+import { join } from "node:path";
+import { access, constants, readdir } from "node:fs/promises";
+
+import { extractPathInfo } from "../utils/extract-path-info";
 
 const INIT_DIRNAME = "files";
 const ERROR_MESSAGE = "FS operation failed";
 
 const list = async () => {
     try {
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = dirname(__filename);
+        const { __dirname } = extractPathInfo(import.meta.url);
         const ENTRY_DIRNAME_PATH = join(__dirname, INIT_DIRNAME);
 
         await access(ENTRY_DIRNAME_PATH, constants.F_OK);
