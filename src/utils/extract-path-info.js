@@ -1,7 +1,7 @@
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { showErrorMessage } from "../show-error-message.js";
+const ERROR_MESSAGE = "Operation failed";
 
 export const extractPathInfo = (metaUrl) => {
     try {
@@ -10,6 +10,6 @@ export const extractPathInfo = (metaUrl) => {
 
         return { __filename, __dirname };
     } catch {
-        showErrorMessage();
+        throw new Error(ERROR_MESSAGE);
     }
 };
